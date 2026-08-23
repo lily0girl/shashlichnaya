@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Вхід — Шашличний Рай</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f1eb;
+        }
+
+        .container {
+            width: 350px;
+            margin: 100px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #8b0000;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #8b0000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #650000;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #8b0000;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Вхід</h2>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="username"
+            placeholder="Введіть логін"
+            required
+        >
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Введіть пароль"
+            required
+        >
+
+        <button type="submit">
+            Увійти
+        </button>
+
+    </form>
+
+    <a href="/">← На головну</a>
+    <a href="/register">Ще не маєте акаунта? Зареєструватися</a>
+
+</div>
+
+</body>
+</html>
