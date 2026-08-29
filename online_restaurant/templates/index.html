@@ -1,0 +1,272 @@
+```html
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Шашличний Рай</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5efe6;
+            color: #333;
+        }
+
+        header {
+            height: 75px;
+            background: #481515;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #d5b078;
+        }
+
+        .hero {
+            height: 650px;
+
+            background-image:
+                linear-gradient(
+                    rgba(35, 10, 10, 0.45),
+                    rgba(35, 10, 10, 0.55)
+                ),
+                url("https://c.pxhere.com/photos/cd/85/shish_kebab_fried_meat_skewers_food_on_the_nature-715777.jpg!d");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin: 0 0 15px;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-size: 27px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #f5f5f5;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+
+            background: #b18a55;
+            color: white;
+
+            padding: 14px 32px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #c69e67;
+            transform: translateY(-2px);
+        }
+
+        .about {
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .about h2 {
+            color: #481515;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            max-width: 650px;
+            margin: auto;
+
+            line-height: 1.7;
+            color: #555;
+            font-size: 17px;
+        }
+
+        footer {
+            background: #481515;
+            color: white;
+
+            text-align: center;
+            padding: 20px;
+
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                height: auto;
+                padding: 20px;
+
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                height: 550px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            Шашличний Рай
+        </div>
+
+        <nav>
+
+            <a href="/">Головна</a>
+
+            <a href="/menu">Меню</a>
+
+            {% if session.get("user_id") %}
+
+                <a href="/cart">Кошик</a>
+
+                <a href="/orders">Мої замовлення</a>
+
+                <a href="/reservation">Бронювання</a>
+
+                <a href="/logout">Вийти</a>
+
+            {% else %}
+
+                <a href="/register">Реєстрація</a>
+
+                <a href="/login">Вхід</a>
+
+            {% endif %}
+
+        </nav>
+
+    </header>
+
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Шашличний Рай</h1>
+
+            <h2>
+                Справжній смак, приготований на вугіллі
+            </h2>
+
+            <p>
+                Соковитий шашлик, свіже м'ясо та затишна атмосфера.
+                Завітайте до нас та насолоджуйтеся смаком справжнього мангалу.
+            </p>
+
+            <a href="/menu" class="button">
+                Переглянути меню
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section class="about">
+
+        <h2>Ласкаво просимо!</h2>
+
+        <p>
+            «Шашличний Рай» — це місце для тих,
+            хто любить ароматне м'ясо, приготоване на справжньому вугіллі.
+            Ми поєднуємо традиційні рецепти,
+            свіжі продукти та теплу атмосферу.
+        </p>
+
+    </section>
+
+
+    <footer>
+
+        © 2026 Шашличний Рай
+
+    </footer>
+
+</body>
+</html>
+```
