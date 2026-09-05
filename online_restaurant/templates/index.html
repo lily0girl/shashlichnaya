@@ -199,6 +199,10 @@
 
             <a href="/menu">Меню</a>
 
+            {% if session.get("username") == "Admin" %}
+            <a href="/add_position">Адмін-панель</a>
+            {% endif %}
+
             {% if session.get("user_id") %}
 
                 <a href="/cart">Кошик</a>

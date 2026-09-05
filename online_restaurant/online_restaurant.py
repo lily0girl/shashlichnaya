@@ -1,9 +1,14 @@
 from flask import Flask, render_template, request, redirect, session
 from online_restaurant_db import db, Users, Menu, Orders, Reservation
+from werkzeug.utils import secure_filename
+import os
+
 
 app = Flask(__name__)
 
 app.secret_key = "shashlik"
+app.config["UPLOAD_FOLDER"] = "static/menu"
+
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///restaurant.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -407,6 +412,50 @@ def delete_reservation(id):
         db.session.commit()
 
     return redirect("/admin/reservations")
+
+
+
+@app.route("/add_position", methods=["GET", "POST"])
+def add_position():
+
+    if "username" not in session or session["username"] != "Admin":
+        return "Доступ заборонено"
+
+    if request.method == "POST":
+
+        name = request.form["name"]
+        description = request.form["description"]
+        ingredients = request.form["ingredients"]
+        price = float(request.form["price"])
+        weight = int(request.form["weight"])
+
+        photo = request.files["photo"]
+
+        filename = secure_filename(photo.filename)
+
+        photo.save(
+            os.path.join(
+                app.config["UPLOAD_FOLDER"],
+                filename
+            )
+        )
+
+        dish = Menu(
+            name=name,
+            photo="/static/menu/" + filename,
+            description=description,
+            ingredients=ingredients,
+            price=price,
+            weight=weight,
+            active=True
+        )
+
+        db.session.add(dish)
+        db.session.commit()
+
+        return redirect("/menu")
+
+    return render_template("add_position.html")
 
 
 if __name__ == "__main__":
