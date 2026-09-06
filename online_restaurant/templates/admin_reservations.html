@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Адмін-панель — Шашличний Рай</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background-color: #f5efe6;
+        }
+
+        .navbar {
+            background-color: #481515;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+
+        h1 {
+            color: #481515;
+        }
+
+        .reservation {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #bb2d3b;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+            Шашличний Рай
+        </a>
+
+        <div>
+
+            <a class="nav-link d-inline-block" href="/">
+                Головна
+            </a>
+
+            <a class="nav-link d-inline-block" href="/menu">
+                Меню
+            </a>
+
+            <a class="nav-link d-inline-block" href="/cart">
+                🛒 Кошик
+            </a>
+
+            <a class="nav-link d-inline-block" href="/orders">
+                Замовлення
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-5">
+        Панель адміністратора
+    </h1>
+
+    <h3 class="mb-4">
+        Бронювання столиків
+    </h3>
+
+    {% if reservations %}
+
+        {% for reservation in reservations %}
+
+        <div class="reservation shadow-sm">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-2">
+
+                    <b>
+                        №{{ reservation.id }}
+                    </b>
+
+                </div>
+
+                <div class="col-md-2">
+
+                    Користувач:
+                    {{ reservation.user_id }}
+
+                </div>
+
+                <div class="col-md-2">
+
+                    Дата:
+                    {{ reservation.date }}
+
+                </div>
+
+                <div class="col-md-2">
+
+                    Час:
+                    {{ reservation.time }}
+
+                </div>
+
+                <div class="col-md-2">
+
+                    Гостей:
+                    {{ reservation.guests }}
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <a
+                        href="/admin/reservations/delete/{{ reservation.id }}"
+                        class="btn btn-delete"
+                    >
+                        Видалити
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="text-center">
+
+            <h4>
+                Бронювань поки немає
+            </h4>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>
